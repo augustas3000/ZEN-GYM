@@ -2,21 +2,20 @@
 <hr>
 <table>
   <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>surname</th>
-    <th>membership status</th>
-    <th>activation status</th>
+    <th>activity</th>
+    <th>class time</th>
     <th>actions</th>
   </tr>
-  <% for member in @members %>
-  <tr>
-    <td><%= member.id%></td>
-    <td><%= member.member_name%></td>
-    <td><%= member.member_surname%></td>
-    <td><%= member.membership_status%></td>
-    <td><%= member.member_activation_status%></td>
-    <td><a href="">Book a class</a> <a href="#">Edit Info</a></td>
-  </tr>
+
+    <% for activity in @activities
+      <tr>
+        <td><%= activity.activity_name %></td>
+        <td><%= activity.activity_name%> <%= %></td>
+        <td><%= member.member_surname%></td>
+        <td><a href="">Book a class</a> <a href="#">Edit Info</a></td>
+      </tr>
+
+
+  <% end %>
   <% end %>
 </table>

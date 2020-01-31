@@ -1,0 +1,44 @@
+
+<h1>Select classes for <%=@member.member_name%></h1>
+
+
+<h1>Select a class:</h1>
+
+
+
+<form method="post" action="/bookings">
+
+
+  <label for="name-select">Name:</label>
+  <select id="name-select" name="member_id">
+      <option value="<%=@member.id%>"> <%=@member.member_name%> </option>
+  </select>
+
+  <label for="surname-select">Surname:</label>
+  <select id="surname-select">
+      <option value=""> <%=@member.member_surname%> </option>
+  </select>
+
+
+  <label for="activity-select">Select Activity:</label>
+  <select id="activity-select" name="activity_id">
+  <%for activity in @activities%>
+      <option value="<%=activity.id%>"> <%=activity.activity_name()%> </option>
+
+  <% end %>
+  </select>
+
+  <label for="class-select">Select Time:</label>
+  <select id="class-select" name="class_time">
+
+  <%times = @classes.map {|cls| cls.class_time} %>
+
+  <%unique_times = times.uniq%>
+  <% for time in unique_times %>
+       <option value="<%=time%>"> <%=time%> </option>
+  <% end %>
+
+  </select>
+
+  <input type="submit"  value="Submit Member">
+</form>

@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 
 class GymClass
-  attr_reader :id, :class_activation_status, :class_time
+  attr_reader :id, :class_activation_status, :class_time, :activity_id
   attr_accessor :class_capacity
 
   def initialize(options)
@@ -43,13 +43,22 @@ class GymClass
   def self.all()
     sql = "SELECT * FROM gym_classes"
     results = SqlRunner.run( sql )
-    return results.map { |hash| GymClass.new(hash) }
+    results = results.map { |hash| GymClass.new(hash) }
+    return results
   end
 
   def self.find( id )
     sql = "SELECT * FROM gym_classes
     WHERE id = $1"
     values = [id]
+    results = SqlRunner.run( sql, values )
+    return GymClass.new( results.first )
+  end
+
+  def self.find_by_activity_and_time(hash)
+    sql = "SELECT * FROM gym_classes
+    WHERE activity_id = $1 AND class_time = $2 "
+    values = [hash['activity_id'].to_i,hash['class_time']]
     results = SqlRunner.run( sql, values )
     return GymClass.new( results.first )
   end
@@ -64,5 +73,8 @@ class GymClass
     values = [@id]
     SqlRunner.run(sql,values)
   end
+
+
+
 
 end

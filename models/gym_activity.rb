@@ -1,7 +1,8 @@
 require_relative( '../db/sql_runner' )
 
 class Activity
-  attr_reader :id
+
+  attr_reader :id, :activity_name
 
   def initialize(options)
     @id = options['id'] if options['id']
@@ -34,7 +35,8 @@ class Activity
   def self.all()
     sql = "SELECT * FROM gym_activities"
     results = SqlRunner.run( sql )
-    return results.map { |hash| Activity.new( hash) }
+    results = results.map { |hash| Activity.new( hash) }
+    return results
   end
 
   def self.find( id )

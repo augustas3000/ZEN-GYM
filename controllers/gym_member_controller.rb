@@ -38,6 +38,21 @@ get '/members/:id' do
   erb( :"members/show" )
 end
 
+# edit particular members info
+get '/members/:id/edit' do
+  @member = Member.find(params['id'].to_i)
+  erb( :"members/edit" )
+end
+
+post '/members/:id' do
+  member_obj_to_update = Member.new(params)
+  member_obj_to_update.update
+  erb( :"members/updated" )
+
+end
+
+
+
 
 
 

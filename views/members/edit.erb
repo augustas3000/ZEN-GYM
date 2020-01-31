@@ -1,0 +1,31 @@
+<h1>Edit gym Member</h1>
+
+<form action="/members/<%= @member.id %>" method="post">
+
+  <label>
+  First Name:
+    <input type="text" name="member_name" value="<%= @member.member_name() %>" >
+  </label>
+
+  <label>
+  Last Name:
+    <input type="text" name="member_surname" value="<%= @member.member_surname() %>">
+  </label>
+
+  <label>Membership status:
+    <select name="membership_status">
+      <option value="standard" <%= "selected" if @member.membership_status == "standard" %>>Standard</option>
+      <option value="premium" <%= "selected" if @member.membership_status == "premium" %>>Premium</option>
+    </select>
+  </label>
+
+
+  <label>Membership activation status:
+    <select name="member_activation_status">
+      <option value="active" <%= "selected" if @member.member_activation_status == "active" %>>Active</option>
+      <option value="deactivated" <%= "selected" if @member.member_activation_status == "deactivated" %>>Deactivated</option>
+    </select>
+  </label>
+
+  <input type='submit' value="Update">
+</form>

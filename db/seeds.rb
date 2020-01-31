@@ -211,8 +211,6 @@ breakdance_class_10_00.save
 # ------------------------------------------------
 # bookings:
 
-john.book_a_class(boxing_class_18_00)
-maria.book_a_class(boxing_class_10_00)
 
 
 

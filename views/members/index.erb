@@ -16,7 +16,7 @@
     <td><%= member.member_surname%></td>
     <td><%= member.membership_status%></td>
     <td><%= member.member_activation_status%></td>
-    <td><a href="">Book a class</a> <a href="#">Edit Info</a></td>
+    <td><a href="/bookings/new/<%=member.id%>">Book a class</a> <a href="#">Edit Info</a></td>
   </tr>
   <% end %>
 </table>

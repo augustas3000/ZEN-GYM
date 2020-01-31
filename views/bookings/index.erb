@@ -1,0 +1,18 @@
+
+<h1>bookingS of zeN gyM</h1>
+<hr>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>gym member id</th>
+    <th>gym class id</th>
+  </tr>
+  <% for booking in @all_bookings %>
+  <tr>
+    <td><%= booking.id%></td>
+    <td><%= booking.gym_member_id%></td>
+    <td><%= booking.gym_class_id%></td>
+  </tr>
+  <% end %>
+</table>

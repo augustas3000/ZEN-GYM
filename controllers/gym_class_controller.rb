@@ -19,6 +19,7 @@ get '/classes' do
   @activities = Activity.all
   @classes = GymClass.all
   erb( :"classes/index" )
+
 end
 
 # provide a form for creating new members
