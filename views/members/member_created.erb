@@ -1,0 +1,8 @@
+<p><%= @new_member_obj.membership_status.capitalize %> membership has been created for:</p>
+<p><%= @new_member_obj.member_name.capitalize %> <%= @new_member_obj.member_surname.capitalize %></p>
+
+<%if @new_member_obj.member_activation_status == 'active' %>
+<p>This member is now <%= @new_member_obj.member_activation_status%>.</p>
+<%else%>
+<p>This member is currently deactivated.</p>
+<%end%>
