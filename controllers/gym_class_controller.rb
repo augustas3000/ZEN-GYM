@@ -16,7 +16,9 @@ also_reload( '../models/*' )
 # Show a list of gym members:
 get '/classes' do
   # get array of member objects from database
-  @activities = Activity.all
+  @activities_hash = Activity.all.map { |activity| [activity.id.to_i, activity.activity_name] }.to_h
+
+
   @classes = GymClass.all
   erb( :"classes/index" )
 

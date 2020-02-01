@@ -4,15 +4,28 @@
 
 <table>
   <tr>
-    <th>id</th>
-    <th>gym member id</th>
-    <th>gym class id</th>
+    <th>booking_id</th>
+    <th>name</th>
+    <th>surname</th>
+
+    <th>membership</th>
+    <th>activity</th>
+    <th>class_time</th>
+    <th>class_id</th>
+    <th>actions</th>
+
+
   </tr>
-  <% for booking in @all_bookings %>
-  <tr>
-    <td><%= booking.id%></td>
-    <td><%= booking.gym_member_id%></td>
-    <td><%= booking.gym_class_id%></td>
-  </tr>
+  <% for booking_hash in @all_bookings_report %>
+
+
+    <tr>
+      <% for k,v in booking_hash %>
+      <td><%=v%></td>
+      <% end %>
+
+      <td><a href="/bookings/<%=booking_hash['booking_id']%>/edit">Edit</a></td>
+    </tr>
+
   <% end %>
 </table>

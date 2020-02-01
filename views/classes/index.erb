@@ -4,18 +4,22 @@
   <tr>
     <th>activity</th>
     <th>class time</th>
+    <th>capacity</th>
     <th>actions</th>
   </tr>
 
-    <% for activity in @activities
+
+<%@classes.sort_by! {|obj| obj.activity_id}%>
+ <% for cls in @classes %>
+
       <tr>
-        <td><%= activity.activity_name %></td>
-        <td><%= activity.activity_name%> <%= %></td>
-        <td><%= member.member_surname%></td>
-        <td><a href="">Book a class</a> <a href="#">Edit Info</a></td>
+        <td><%= @activities_hash[cls.activity_id] %></td>
+
+        <td><%= cls.class_time %></td>
+        <td><%= cls.class_capacity %></td>
+
+        <td><a href="/bookings/new/classes_to_members/<%=cls.id%>">Assign a Member</a><a href="#">Edit Class</a></td>
       </tr>
+  <%end%>
 
-
-  <% end %>
-  <% end %>
 </table>

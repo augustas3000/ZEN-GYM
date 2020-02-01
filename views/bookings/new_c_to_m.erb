@@ -1,0 +1,32 @@
+
+<h1><%=@class.class_time%></h1>
+<h1><%=@activity.activity_name%></h1>
+
+<h1>Select a member to assign for activity:  <%=@activity.activity_name%></h1>
+
+
+<form method="post" action="/bookings/classes">
+
+  <label for="activity-select">Activity:</label>
+  <select id="activity-select" name="activity_id">
+      <option value="<%=@activity.id%>"> <%=@activity.activity_name%> </option>
+  </select>
+
+  <label for="time-select">Class Time:</label>
+  <select id="time-select" name = "class_time">
+      <option value="<%=@class.class_time%>"> <%=@class.class_time%> </option>
+  </select>
+
+
+  <label for="member-select">Select a Gym Member:</label>
+  <select id="member-select" name="member_id">
+
+  <%for member in @members%>
+      <option value="<%=member.id%>"> <%=member.member_name%> <%=member.member_surname%> </option>
+
+  <% end %>
+  </select>
+
+
+  <input type="submit"  value="Submit For Class">
+</form>

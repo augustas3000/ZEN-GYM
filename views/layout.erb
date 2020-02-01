@@ -3,12 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>zeN gyM</title>
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+
+  <title>zeN Gym</title>
 </head>
 <body>
 
-  <%= yield %>
+  <div class="container">
 
+    <header class="header">
+      <div class="header__logo-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrAJvdyICzgq7XH0vc_ceyEBj_xBIXajAOG9mgM92kSUotsYeaCQ&s" alt="" class="header__logo">
+      </div>
+
+      <div class="header__text-box">
+        <h1 class="header__text-box__text">zeN gyM </h1>
+      </div>
+
+      <div class="header__logo-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrAJvdyICzgq7XH0vc_ceyEBj_xBIXajAOG9mgM92kSUotsYeaCQ&s" alt="" class="header__logo">
+      </div>
+
+    </header>
+
+    <div class="content">
+
+      <nav class="sidebar">
+        <!-- <h2 class="sidebar__name">Navigation</h2>
+        <hr> -->
+        <ul class="sidebar__nav">
+          <li class="sidebar__nav__item"><a href="/classes" class="sidebar__nav__item__link">classeS</a></li>
+          <li class="sidebar__nav__item"><a href="/members" class="sidebar__nav__item__link">memberS</a></li>
+          <li class="sidebar__nav__item"><a href="/bookings" class="sidebar__nav__item__link">bookingS</a></li>
+        </ul>
+
+      </nav>
+
+      <main class="hogwarts">
+        <%= yield %>
+      </main>
+    </div>
+
+  </div>
 </body>
 </html>

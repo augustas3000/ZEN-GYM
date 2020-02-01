@@ -58,4 +58,9 @@ class Activity
     SqlRunner.run(sql,values)
   end
 
+  def name_by_id
+    @id
+
+  end
+
 end

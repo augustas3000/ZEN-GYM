@@ -1,0 +1,112 @@
+
+/*css variables */
+
+:root {
+  --color-primary: #f5eaea;
+  --color-primary-light: #7fcd91;
+  --color-primary-dark: #5b5656;
+  --color-darkest: #4d4646;
+}
+
+/* base */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  /* good practice to use % instead of px
+  as px prevents user from ability to resize
+  fonts through the browser. % in this case
+  would be that of value browser give by de fault
+  which is 16px for font size, so we want 10px initial value, which is 62.5% of 16px */
+  box-sizing: border-box;
+
+}
+
+body {
+  background-color: var(--color-primary-light);
+  font-family: 'Oldenburg', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  padding: 3rem;
+  color: var(--color-primary);
+}
+
+
+/* layout */
+.container {
+  background-color: var(--color-primary-dark);
+  min-height: 50rem;
+  box-shadow: 0 1rem 1rem var(--color-primary-dark);
+}
+
+.header {
+  background-color: var(--color-primary-dark);
+  border-bottom: var(--color-primary-light);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+}
+
+.header__text-box {
+  align-self: center;
+}
+
+.header__text-box__text {
+  font-size: 4rem;
+}
+
+
+.header__logo {
+  height: 10rem;
+  padding: 2rem;
+}
+
+.content {
+  display: flex;
+}
+
+
+.sidebar {
+  font-size: 1.5rem;
+  background-color: var(--color-darkest);
+  /* felx grow, flex shrink, flex basis: */
+  flex: 0 0 20%;
+  text-align: center;
+  height: 100vh;
+}
+
+.sidebar__name {
+
+}
+
+
+.sidebar__nav__item {
+  list-style: none;
+  padding: 1rem;
+  border-bottom: 1px solid;
+
+}
+
+.sidebar__nav__item__link {
+  text-decoration: none;
+  font-size: 1.7rem;
+  color: var(--color-primary);
+}
+
+
+.hogwarts {
+  background-color: var(--color-primary-dark);
+  /* grow as much as possible: */
+  flex: 1;
+  padding: 0 3rem 3rem 3rem;
+  font-size: 1.3rem;
+}

@@ -74,6 +74,8 @@ class GymClass
     SqlRunner.run(sql,values)
   end
 
+  # members booked
+
 
 
 
