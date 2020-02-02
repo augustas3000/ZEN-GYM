@@ -1,25 +1,39 @@
-<h1>classeS of zeN gyM</h1>
-<hr>
-<table>
-  <tr>
-    <th>activity</th>
-    <th>class time</th>
-    <th>capacity</th>
-    <th>actions</th>
-  </tr>
+
+<div class="">
+
+  <header class="header--small">
+    <h1 class="header--small__text">gyM classeS</h1>
 
 
-<%@classes.sort_by! {|obj| obj.activity_id}%>
- <% for cls in @classes %>
+    <div class="header--small__links-box">
+      <a href="/classes">List all classes</a>
+      <a href="/classes/new">Create a new class</a>
+    </div>
 
+
+  </header>
+
+  <div class="">
+
+    <table class="gym-classes-table">
       <tr>
-        <td><%= @activities_hash[cls.activity_id] %></td>
-
-        <td><%= cls.class_time %></td>
-        <td><%= cls.class_capacity %></td>
-
-        <td><a href="/bookings/new/classes_to_members/<%=cls.id%>">Assign a Member</a><a href="#">Edit Class</a></td>
+        <th>activity</th>
+        <th>class time</th>
+        <th>capacity</th>
+        <th>actions</th>
       </tr>
-  <%end%>
 
-</table>
+    <%@classes.sort_by! {|obj| obj.activity_id}%>
+     <% for cls in @classes %>
+
+          <tr>
+            <td><%= @activities_hash[cls.activity_id] %></td>
+
+            <td><%= cls.class_time %></td>
+            <td><%= cls.class_capacity %></td>
+
+            <td><a href="/bookings/new/classes_to_members/<%=cls.id%>">Assign a Member</a><a href="#">Edit Class</a></td>
+          </tr>
+      <%end%>
+    </table>
+  </div>

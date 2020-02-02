@@ -13,7 +13,7 @@ also_reload( '../models/*' )
 # /photos/:id	DELETE	destroy
 
 
-# Show a list of gym members:
+# Show a list of gym classes:
 get '/classes' do
   # get array of member objects from database
   @activities_hash = Activity.all.map { |activity| [activity.id.to_i, activity.activity_name] }.to_h
@@ -23,6 +23,29 @@ get '/classes' do
   erb( :"classes/index" )
 
 end
+
+get '/classes/new' do
+  @activities = Activity.all
+
+  # activity
+  # class time
+  # class_capacity
+  # activation status
+
+
+  erb( :"classes/new" )
+end
+
+post '/classes' do
+  @new_gym_class = GymClass.new(params)
+  @new_gym_class.save
+  erb( :"classes/created" )
+end
+
+
+
+
+
 
 # provide a form for creating new members
 # get '/classes/new' do

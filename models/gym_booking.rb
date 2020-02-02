@@ -7,7 +7,7 @@ class Booking
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @gym_member_id = options['gym_member_id'].to_i
-    @gym_class_id = options['gym_class_id']
+    @gym_class_id = options['gym_class_id'].to_i
   end
 
   def save()
@@ -95,6 +95,10 @@ class Booking
     result = SqlRunner.run(sql, values)
     result = result[0]
     return result['class_time']
+  end
+
+  def self.find_gym_class_by_id(gym_class_id)
+
   end
 
 end

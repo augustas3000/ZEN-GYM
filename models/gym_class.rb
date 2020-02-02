@@ -56,6 +56,8 @@ class GymClass
   end
 
   def self.find_by_activity_and_time(hash)
+    
+
     sql = "SELECT * FROM gym_classes
     WHERE activity_id = $1 AND class_time = $2 "
     values = [hash['activity_id'].to_i,hash['class_time']]

@@ -1,0 +1,29 @@
+<h1>Hello you can now create a new class</h1>
+
+<form method="post" action="/classes">
+
+  <label for="activity">Class Activity:</label>
+  <select id="activity" name="activity_id">
+    <%for activity in @activities %>
+        <option value="<%=activity.id%>"><%=activity.activity_name%></option>
+    <% end %>
+  </select>
+
+  <!-- look into time class -->
+  <label for="class_time">Class Time:</label>
+  <input id="class_time" type="text" name="class_time"  />
+
+
+  <label for="class_capacity">Class Capacity:</label>
+  <input id="class_capacity" type="text" name="class_capacity"/>
+
+
+  <label for="activation_status">Activation Status:</label>
+  <select id="activation_status" name="class_activation_status">
+
+        <option value="active" selected>Active</option>
+        <option value="deactivated" selected>Deactivated</option>
+
+  </select>
+  <input type="submit"  value="Submit Member">
+</form>

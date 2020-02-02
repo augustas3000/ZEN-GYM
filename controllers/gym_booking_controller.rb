@@ -86,21 +86,28 @@ post '/bookings/members' do
 end
 
 
-# update after editing a booking - make sure values come back as appropriate!!!!!!!!!!!!!!!!!
+# still not working properly? - class table updates?
 post '/bookings/:id' do
 
-# {"member_id"=>"3", "activity_id"=>" 5", "class_time"=> "10:00", "id"=>"6"}
-#
-#   hash = params.select {|k,v| k == 'activity_id' || k == 'class_time'}
-
-  @new_gym_class = GymClass.find_by_activity_and_time(params)
-
+  # find a booking object(not updated yet)
   @booking_obj = Booking.find(params['id'].to_i)
+  # find old gym class by id
+  @old_gym_class = GymClass.find(@booking_obj.gym_class_id)
+  # restore the capacity of old gym class by 1
+  @old_gym_class.class_capacity += 1
+  @old_gym_class.update
 
+
+
+  # find a newly selected gym_class object
+  @new_gym_class = GymClass.find_by_activity_and_time(params)
+  # reduce the capacity of newly selected gym class:
+  @new_gym_class.class_capacity -= 1
+  @new_gym_class.update
+
+  # make changes to booking object
   @booking_obj.gym_member_id = params['member_id'].to_i
-
-  @booking_obj.gym_class_id = params[@new_gym_class.id]
-
+  @booking_obj.gym_class_id = @new_gym_class.id.to_i
   @booking_obj.update
 
   erb( :"bookings/updated" )

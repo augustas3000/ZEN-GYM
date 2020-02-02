@@ -84,10 +84,10 @@ body {
   height: 100vh;
 }
 
-.sidebar__name {
-
+.sidebar__nav {
+  position: fixed;
+  width: 24.1rem;
 }
-
 
 .sidebar__nav__item {
   list-style: none;
@@ -103,10 +103,45 @@ body {
 }
 
 
-.hogwarts {
+.main {
   background-color: var(--color-primary-dark);
   /* grow as much as possible: */
   flex: 1;
   padding: 0 3rem 3rem 3rem;
   font-size: 1.3rem;
 }
+
+/* ------------------------------------------------- */
+/* classes views */
+.header--small {
+
+}
+.header--small__text {
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+.header--small__links-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* s */
