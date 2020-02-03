@@ -1,29 +1,45 @@
-<h1>Hello you can now create a new class</h1>
+<div class="main__container">
 
-<form method="post" action="/classes">
+  <header class="header--small">
+    <h1 class="header--small__text">classes</h1>
 
-  <label for="activity">Class Activity:</label>
-  <select id="activity" name="activity_id">
-    <%for activity in @activities %>
-        <option value="<%=activity.id%>"><%=activity.activity_name%></option>
-    <% end %>
-  </select>
+    <div class="header--small__links-box">
+      <a class="btn" href="/classes">list all classes</a>
+      <a class="btn" href="/classes/new">create a new class</a>
+    </div>
+  </header>
 
-  <!-- look into time class -->
-  <label for="class_time">Class Time:</label>
-  <input id="class_time" type="text" name="class_time"  />
+  <div class="main__view">
+
+    <h1>new class</h1>
+    <form method="post" action="/classes">
+
+      <label for="activity">Class Activity:</label>
+      <select id="activity" name="activity_id">
+        <%for activity in @activities %>
+            <option value="<%=activity.id%>"><%=activity.activity_name%></option>
+        <% end %>
+      </select>
+
+      <!-- look into time class -->
+      <label for="class_time">Class Time:</label>
+      <input id="class_time" type="text" name="class_time"  />
 
 
-  <label for="class_capacity">Class Capacity:</label>
-  <input id="class_capacity" type="text" name="class_capacity"/>
+      <label for="class_capacity">Class Capacity:</label>
+      <input id="class_capacity" type="text" name="class_capacity"/>
 
 
-  <label for="activation_status">Activation Status:</label>
-  <select id="activation_status" name="class_activation_status">
+      <label for="activation_status">Activation Status:</label>
+      <select id="activation_status" name="class_activation_status">
 
-        <option value="active" selected>Active</option>
-        <option value="deactivated">Deactivated</option>
+            <option value="active" selected>Active</option>
+            <option value="deactivated">Deactivated</option>
 
-  </select>
-  <input type="submit"  value="Submit Class">
-</form>
+      </select>
+      <input type="submit"  value="Submit Class">
+    </form>
+
+  </div>
+
+<!-- sddddsdfsdffsdfsdffsddfs -->

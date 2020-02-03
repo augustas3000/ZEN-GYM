@@ -12,6 +12,7 @@
   </header>
 
   <div class="main__view">
+    <h1>all activities</h1>
     <table class="results-table">
       <thead>
       <tr>
@@ -31,31 +32,22 @@
              <td><%= activity.activity_name %></td>
 
        <div class="results-table__links-box">
-             <td><a class="btn-tables" href="/activities/<%= activity.id %>/edit">edit</a></td>
+             <td>
+               <a class="btn-tables" href="/activities/<%= activity.id %>/edit">edit</a>
+
+                <form class = "form-btn" action="/activities/<%= activity.id %>/delete" method="post">
+                <input class="btn-form btn-tables" type='submit' value="delete">
+                </form>
        </div>
            </tr>
       <% end %>
     </tbody>
     </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
+
+<!--
+  <%# <form class = "form-btn btn-tables" action="/activities/<%= activity.id %>/edit" method="get"> %>
+  <input class="btn-form btn-tables" type='submit' value="editasdas">
+  </form>
+-->

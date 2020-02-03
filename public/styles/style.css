@@ -243,3 +243,15 @@ some padding before members list*/
 	position:relative;
 	top:1px;
 }
+
+/* for delete button which has to be in a form */
+.form-btn {
+  display:inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-form {
+  border: none;
+  padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+}

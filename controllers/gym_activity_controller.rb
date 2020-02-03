@@ -26,7 +26,7 @@ end
 post '/activities' do
   # params = {"activity_name"=>"basketball"}
   @new_activity = Activity.new(params)
-  @result = @new_activity.save 
+  @result = @new_activity.save
   erb( :"activities/created" )
 end
 
@@ -37,8 +37,16 @@ get '/activities/:id/edit' do
   erb( :"activities/edit" )
 end
 
+
+
 post '/activities/:id' do
   @activity_current = Activity.find(params['id'].to_i)
   @result = @activity_current.change_name(params['activity_name'])
   erb( :"activities/updated" )
+end
+
+post '/activities/:id/delete' do
+  @activity_to_delete = Activity.find(params['id'].to_i)
+  @activity_to_delete.delete
+  erb( :"activities/deleted" )
 end

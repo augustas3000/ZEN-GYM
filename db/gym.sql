@@ -22,7 +22,7 @@ CREATE TABLE gym_activities
 CREATE TABLE gym_classes
 (
   id SERIAL PRIMARY KEY,
-  activity_id INT references gym_activities(id),
+  activity_id INT references gym_activities(id) ON DELETE CASCADE,
   class_time  VARCHAR(255) NOT NULL,
   class_capacity INT,
   class_activation_status VARCHAR(255) NOT NULL
