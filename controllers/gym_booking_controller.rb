@@ -50,7 +50,6 @@ end
 
 
 # a booking for a particular class(class to member booking)
-
 get '/bookings/new/classes_to_members/:id' do
   @class = GymClass.find(params['id'].to_i)
   @members = Member.all
@@ -62,10 +61,11 @@ end
 post '/bookings/classes' do
   gym_member = Member.find(params['member_id'].to_i)
   @chosen_class = GymClass.find_by_activity_and_time(params)
-  gym_member.book_a_class(@chosen_class)
-  redirect to ('/classes')
-end
+  @result = gym_member.book_a_class(@chosen_class)
 
+  # booking successful?
+  erb( :"bookings/booked_from_class" )
+end
 
 
 
@@ -77,38 +77,22 @@ get '/bookings/new/members_to_classes/:id' do
   erb( :"bookings/new_c" )
 end
 # post route specifically for booking from members view
-# and from classes view, maybe from bookings too.
+
 post '/bookings/members' do
-  gym_member = Member.find(params['member_id'].to_i)
+  @gym_member = Member.find(params['member_id'].to_i)
   @chosen_class = GymClass.find_by_activity_and_time(params)
-  gym_member.book_a_class(@chosen_class)
-  redirect to ('/members')
+  @result = @gym_member.book_a_class(@chosen_class)
+  erb( :"bookings/booked_from_member" )
 end
 
 
-# still not working properly? - class table updates?
+
 post '/bookings/:id' do
-
-  # find a booking object(not updated yet)
   @booking_obj = Booking.find(params['id'].to_i)
-  # find old gym class by id
-  @old_gym_class = GymClass.find(@booking_obj.gym_class_id)
-  # restore the capacity of old gym class by 1
-  @old_gym_class.class_capacity += 1
-  @old_gym_class.update
-
-
-
-  # find a newly selected gym_class object
+  @new_member_obj = Member.find(params['member_id'].to_i)
   @new_gym_class = GymClass.find_by_activity_and_time(params)
-  # reduce the capacity of newly selected gym class:
-  @new_gym_class.class_capacity -= 1
-  @new_gym_class.update
-
-  # make changes to booking object
-  @booking_obj.gym_member_id = params['member_id'].to_i
-  @booking_obj.gym_class_id = @new_gym_class.id.to_i
-  @booking_obj.update
-
+  @old_gym_class = GymClass.find(@booking_obj.gym_class_id)
+  @result = @booking_obj.edit_booking(@new_member_obj,@old_gym_class,@new_gym_class)
+  # binding.pry
   erb( :"bookings/updated" )
 end

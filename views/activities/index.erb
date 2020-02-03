@@ -1,0 +1,61 @@
+
+<div class="main__container">
+
+  <header class="header--small">
+    <h1 class="header--small__text">activities</h1>
+
+    <div class="header--small__links-box">
+      <a class="btn" href="/activities">list all activities</a>
+      <a class="btn" href="/activities/new">create a new activity</a>
+    </div>
+
+  </header>
+
+  <div class="main__view">
+    <table class="results-table">
+      <thead>
+      <tr>
+        <th>activity id</th>
+        <th>activity name</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+
+    <%@all_activities.sort_by! {|obj| obj.activity_name}%>
+
+    <tbody>
+      <% for activity in @all_activities %>
+           <tr>
+             <td><%= activity.id %></td>
+
+             <td><%= activity.activity_name %></td>
+
+       <div class="results-table__links-box">
+             <td><a class="btn-tables" href="/activities/<%= activity.id %>/edit">edit</a></td>
+       </div>
+           </tr>
+      <% end %>
+    </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>

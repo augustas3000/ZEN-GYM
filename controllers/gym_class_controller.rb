@@ -42,6 +42,16 @@ post '/classes' do
   erb( :"classes/created" )
 end
 
+get '/classes/:id' do
+
+  @activities = Activity.all
+  @class = GymClass.find(params['id'].to_i)
+  @current_activity = Activity.find(@class.activity_id)
+  erb( :"classes/show" )
+end
+
+
+
 
 
 

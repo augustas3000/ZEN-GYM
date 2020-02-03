@@ -1,0 +1,73 @@
+
+<div class="main__container">
+
+  <header class="header--small">
+    <h1 class="header--small__text">classes</h1>
+
+    <div class="header--small__links-box">
+      <a class="btn" href="/classes">list all classes</a>
+      <a class="btn" href="/classes/new">create a new class</a>
+    </div>
+
+  </header>
+
+  <div class="main__view">
+    <div class="results-table-container">
+    <table class="results-table--class-info">
+      <caption>selected class info</caption>
+      <thead>
+      <tr>
+        <th>class id</th>
+        <th>activity</th>
+        <th>class time</th>
+        <th>capacity</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+
+    <tbody>
+          <tr>
+            <caption class="results-table--class-info__caption">
+            <td><%=@class.id%></td>
+            <td><%=@current_activity.activity_name%></td>
+            <td><%=@class.class_time%></td>
+            <td><%=@class.class_capacity%></td>
+            <td><a class="btn-tables results-table__links-box__link" href="">Delete</a></td>
+          </tr>
+    </tbody>
+    </table>
+    </div>
+
+
+    <table class="results-table">
+      <caption class="results-table__caption">booked members for selected class</caption>
+      <thead>
+      <tr>
+        <th>member id</th>
+        <th>name</th>
+        <th>surname</th>
+        <th>member status</th>
+        <th>activation status</th>
+        <th>actions</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <%for member in @class.members_booked%>
+            <td><%=member.id%></td>
+            <td><%=member.member_name%></td>
+            <td><%=member.member_surname%></td>
+            <td><%=member.membership_status%></td>
+            <td><%=member.member_activation_status%></td>
+            <td><a class="btn-tables results-table__links-box__link" href="">Delete/Edit</a></td>
+          <%end%>
+            </tr>
+      </tbody>
+      </table>
+
+
+
+
+  </div>

@@ -20,6 +20,11 @@ get '/members' do
   erb( :"members/index" )
 end
 
+get '/members/deactivated' do
+  @members_deactivated = Member.deactivated_members()
+  erb( :"members/index_deactivated" )
+end
+
 # provide a form for creating new members
 get '/members/new' do
   erb( :"members/new" )

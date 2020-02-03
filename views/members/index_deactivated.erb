@@ -22,17 +22,23 @@
         <th>actions</th>
       </tr>
 
-      <% for member in @members %>
-        <%if member.member_activation_status == 'active'%>
+      <% for member in @members_deactivated %>
         <tr>
           <td><%= member.id%></td>
           <td><%= member.member_name%></td>
           <td><%= member.member_surname%></td>
           <td><%= member.membership_status%></td>
           <td><%= member.member_activation_status%></td>
-          <td><a class="btn-tables" href="/bookings/new/members_to_classes/<%= member.id%>">book a class</a><a class="btn-tables" href="#">Edit</a> <a class="btn-tables" href="#">More Info</a></td>
+
+          <td>
+          <div class="results-table__links-box">
+            <a class="btn-tables results-table__links-box__link" href="#">Edit</a><a class="btn-tables results-table__links-box__link" href="#">Delete</a>
+          </div>
+          </td>
+
+
+
         </tr>
-        <% end %>
       <% end %>
     </table>
 

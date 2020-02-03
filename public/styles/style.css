@@ -1,10 +1,9 @@
 
 /*css variables */
-
 :root {
   --color-primary: #f5eaea;
-  --color-primary-light: #7fcd91;
-  --color-primary-dark: #5b5656;
+  --color-primary-light: #fbf4f9;
+  --color-primary-dark: #916dd5;
   --color-darkest: #4d4646;
 }
 
@@ -27,15 +26,39 @@ html {
   would be that of value browser give by de fault
   which is 16px for font size, so we want 10px initial value, which is 62.5% of 16px */
   box-sizing: border-box;
-
 }
 
 body {
   background-color: var(--color-primary-light);
-  font-family: 'Oldenburg', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  padding: 3rem;
+  padding: 2rem;
+  color: var(--color-primary);
+}
+
+
+/* navigation */
+
+.sidebar {
+  font-size: 1.5rem;
+  text-align: center;
+  position: fixed;
+  left: 4rem;
+  border: 1px var(--color-primary) solid;
+}
+.sidebar__nav {
+  width: 20rem;
+}
+
+.sidebar__nav__item {
+  list-style: none;
+  padding: 1rem;
+}
+
+ .sidebar__nav__item__link {
+  text-decoration: none;
+  font-size: 1.7rem;
   color: var(--color-primary);
 }
 
@@ -45,6 +68,7 @@ body {
   background-color: var(--color-primary-dark);
   min-height: 50rem;
   box-shadow: 0 1rem 1rem var(--color-primary-dark);
+  padding-right: 3rem;
 }
 
 .header {
@@ -52,8 +76,8 @@ body {
   border-bottom: var(--color-primary-light);
   text-align: center;
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 3rem;
+  justify-content: flex-end;
+  padding: 3rem;
 }
 
 .header__text-box {
@@ -61,87 +85,161 @@ body {
 }
 
 .header__text-box__text {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 
+.header__logo-box {
+  height: 6rem;
+}
+
 .header__logo {
-  height: 10rem;
-  padding: 2rem;
+  height: 100%;
 }
 
 .content {
   display: flex;
 }
 
-
-.sidebar {
-  font-size: 1.5rem;
-  background-color: var(--color-darkest);
-  /* felx grow, flex shrink, flex basis: */
-  flex: 0 0 20%;
-  text-align: center;
-  height: 100vh;
+.nav__space {
+  width: 22%;
 }
-
-.sidebar__nav {
-  position: fixed;
-  width: 24.1rem;
-}
-
-.sidebar__nav__item {
-  list-style: none;
-  padding: 1rem;
-  border-bottom: 1px solid;
-
-}
-
-.sidebar__nav__item__link {
-  text-decoration: none;
-  font-size: 1.7rem;
-  color: var(--color-primary);
-}
-
 
 .main {
-  background-color: var(--color-primary-dark);
-  /* grow as much as possible: */
+  /* background-color: var(--color-primary-dark); */
   flex: 1;
-  padding: 0 3rem 3rem 3rem;
   font-size: 1.3rem;
+  /* border: 1px var(--color-primary) solid; */
 }
 
 /* ------------------------------------------------- */
 /* classes views */
+/* classes header */
 .header--small {
+  border: 1px var(--color-primary) solid;
+  padding-bottom: 2rem;
 
 }
+
 .header--small__text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
 }
-
 
 .header--small__links-box {
   display: flex;
   justify-content: space-around;
 }
+/* classes main view */
+.main__view {
+  padding-top: 3rem;
+}
+
+
+/* tables */
+.results-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.results-table tr {
+   border-bottom: 1px solid;
+}
+
+.results-table__caption {
+  font-size: 2rem;
+}
+
+.results-table th {
+  font-size: 1.8rem;
+}
+
+.results-table td {
+  font-size: 1.6rem;
+  padding: 0.5rem 0.5rem;
+}
+
+
+.results-table__links-box {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.results-table__links-box__link {
+
+}
+
+/* small table giving class info with
+some padding before members list*/
+.results-table-container {
+  padding: 3rem 0 5rem 0;
+}
+
+.results-table--class-info {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  border: 1px solid;
+  border-top: none;
+}
+
+.results-table--class-info th {
+  font-size: 1.8rem;
+}
+
+.results-table--class-info td {
+  font-size: 1.6rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.results-table--class-info caption {
+  font-size: 2rem;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  text-align: center;
+}
 
 
 
 
+/* links buttons */
+/* main buttons */
+.btn {
+	background-color: #bc7ad6;
+	border-radius:1.7rem;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	padding: 0.5rem 2rem;
+	text-decoration:none;
+  font-size: 2rem;
+}
+.btn:hover {
+	background-color:#e0cb45;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+/* table buttons: */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* s */
+.btn-tables {
+	background-color:#bc7ad6;
+	border-radius:1.7rem;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+	text-decoration:none;
+  font-size: 1rem;
+}
+.btn-tables:hover {
+	background-color:#e0cb45;
+}
+.btn-tables:active {
+	position:relative;
+	top:1px;
+}

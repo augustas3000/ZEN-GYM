@@ -20,6 +20,12 @@
   </select>
 
 
+  <label for="surname-select">Membership status:</label>
+  <select id="surname-select">
+      <option value=""> <%=@member.membership_status%> </option>
+  </select>
+
+
   <label for="activity-select">Select Activity:</label>
   <select id="activity-select" name="activity_id">
   <%for activity in @activities%>

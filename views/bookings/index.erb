@@ -1,31 +1,44 @@
 
-<h1>bookingS of zeN gyM</h1>
-<hr>
+<div class="main__container">
 
-<table>
-  <tr>
-    <th>booking_id</th>
-    <th>name</th>
-    <th>surname</th>
+  <header class="header--small">
+    <h1 class="header--small__text">bookings</h1>
 
-    <th>membership</th>
-    <th>activity</th>
-    <th>class_time</th>
-    <th>class_id</th>
-    <th>actions</th>
+    <div class="header--small__links-box">
+      <a class="btn" href="/bookings">all bookings</a>
+      <a class="btn" href="/bookings/new">new booking</a>
+    </div>
+
+  </header>
+
+  <div class="main__view">
+
+    <table class="results-table">
+      <tr>
+        <th>booking_id</th>
+        <th>name</th>
+        <th>surname</th>
+
+        <th>membership</th>
+        <th>activity</th>
+        <th>class_time</th>
+        <th>class_id</th>
+        <th>actions</th>
 
 
-  </tr>
-  <% for booking_hash in @all_bookings_report %>
+      </tr>
+      <% for booking_hash in @all_bookings_report %>
 
 
-    <tr>
-      <% for k,v in booking_hash %>
-      <td><%=v%></td>
+        <tr>
+          <% for k,v in booking_hash %>
+          <td><%=v%></td>
+          <% end %>
+
+          <td><a href="/bookings/<%=booking_hash['booking_id']%>/edit">Edit</a></td>
+        </tr>
+
       <% end %>
+    </table>
 
-      <td><a href="/bookings/<%=booking_hash['booking_id']%>/edit">Edit</a></td>
-    </tr>
-
-  <% end %>
-</table>
+  </div>

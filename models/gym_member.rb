@@ -67,6 +67,7 @@ class Member
     if @member_activation_status == 'active'
       if class_obj.class_activation_status == 'active'
         if class_obj.class_capacity > 0
+
           if @membership_status == 'standard' && class_obj.class_time == '18:00'
             return "Only premium members are eligible for evening classes. Please upgrade to premium or select a morning class."
           end
@@ -81,12 +82,21 @@ class Member
           }
           booking_obj = Booking.new(options_hash_booking)
           booking_obj.save
+          return
+        else
+          return "Sorry, but the class is now fully booked. Please select another class/time"
         end
-        return "Sorry, but the class is now fully booked. Please select another class/time"
       end
       return "Sorry but the class is currently deactivated. Please select another class."
     end
     return "Sorry, but your membership is deactivated"
+  end
+
+
+  def self.deactivated_members()
+    sql = "SELECT * FROM gym_members WHERE gym_members.member_activation_status = 'deactivated'"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| Member.new( hash) }
   end
 
 end

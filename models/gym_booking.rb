@@ -1,4 +1,5 @@
 require_relative( '../db/sql_runner' )
+require 'pry'
 
 class Booking
 
@@ -97,8 +98,39 @@ class Booking
     return result['class_time']
   end
 
-  def self.find_gym_class_by_id(gym_class_id)
+  # def self.find_gym_class_by_id(gym_class_id)
+  #
+  # end
 
+
+  def edit_booking(new_member_obj,old_gym_class_obj,new_gym_class_obj)
+
+    if new_member_obj.member_activation_status == 'active'
+      if new_gym_class_obj.class_activation_status == 'active'
+        if new_gym_class_obj.class_capacity > 0
+
+          if new_member_obj.membership_status == 'standard' && new_gym_class_obj.class_time == '18:00'
+
+            return "Only premium members are eligible for evening classes. Please upgrade to premium or select a morning class."
+          end
+
+          old_gym_class_obj.class_capacity += 1
+          old_gym_class_obj.update()
+          new_gym_class_obj.class_capacity -= 1
+          new_gym_class_obj.update()
+
+          @gym_member_id = new_member_obj.id
+          @gym_class_id =  new_gym_class_obj.id
+          update
+        else
+          return "Sorry, but the class is now fully booked. Please select another class/time"
+        end
+
+      end
+      return "Sorry but the class is currently deactivated. Please select another class."
+    end
+    return "Sorry, but your membership is deactivated"
   end
+
 
 end

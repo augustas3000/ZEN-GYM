@@ -1,0 +1,12 @@
+<h1>edit an activity</h1>
+
+<form action="/activities/<%= @activity_current.id %>" method="post">
+
+  <label>
+  New activity name:
+    <input type="text" name="activity_name" value="<%= @activity_current.activity_name() %>" >
+  </label>
+
+  <input type='submit' value="Update">
+
+</form>

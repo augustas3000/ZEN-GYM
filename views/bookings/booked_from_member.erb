@@ -1,0 +1,7 @@
+<% if @result.is_a?(String) %>
+    <h2><%=@result%></h2>
+    <a href="/bookings/new/members_to_classes/<%=@gym_member.id%>">Go back</a>
+    <a href="#">Update details</a>
+<% else %>
+<h2>Success</h2>
+<%end%>

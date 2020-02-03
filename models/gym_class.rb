@@ -56,7 +56,7 @@ class GymClass
   end
 
   def self.find_by_activity_and_time(hash)
-    
+
 
     sql = "SELECT * FROM gym_classes
     WHERE activity_id = $1 AND class_time = $2 "
@@ -77,7 +77,14 @@ class GymClass
   end
 
   # members booked
-
+  def members_booked()
+    sql = "SELECT gym_members.* FROM class_bookings LEFT JOIN gym_members
+    ON gym_members.id = class_bookings.gym_member_id WHERE class_bookings.gym_class_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    results = results.map { |hash| Member.new(hash) }
+    return results
+  end
 
 
 

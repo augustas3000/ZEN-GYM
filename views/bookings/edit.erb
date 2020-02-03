@@ -15,7 +15,7 @@
   <select id="member-select" name="activity_id">
 
     <%for activity in @activities%>
-      <option <%= "selected" if activity.activity_name == @booking_to_edit.activity_name %> value=" <%=activity.id %>" ><%=activity.activity_name%></option>
+      <option <%= "selected" if activity.activity_name == @booking_to_edit.activity_name %> value="<%=activity.id %>" ><%=activity.activity_name%></option>
     <% end %>
   </select>
 

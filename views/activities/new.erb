@@ -1,0 +1,24 @@
+
+<div class="main__container">
+
+  <header class="header--small">
+    <h1 class="header--small__text">create a new activity</h1>
+
+    <div class="header--small__links-box">
+      <a class="btn" href="/activities">list all activities</a>
+      <a class="btn" href="/activities/new">create a new activity</a>
+    </div>
+
+  </header>
+
+  <div class="main__view">
+
+    <form method="post" action="/activities">
+
+      <label for="activity-name">Activity name:</label>
+      <input id="activity-name" type="text" name="activity_name"/>
+
+      <input type="submit"  value="Create Activity">
+    </form>
+
+  </div>

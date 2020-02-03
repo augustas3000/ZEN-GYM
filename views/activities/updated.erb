@@ -1,0 +1,8 @@
+<% if @result.is_a?(String) %>
+    <h2><%=@result%></h2>
+    <a href="/activities/<%=@activity_current.id%>/edit">Go back to editing</a>
+    <a href="/activities">Go back to activities</a>
+<%else%>
+    <h2>Success</h2>
+    <a href="/activities">Go back to activities</a>
+<%end%>

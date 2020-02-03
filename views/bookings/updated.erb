@@ -1,1 +1,9 @@
-<h1>Congrats!</h1>
+<% if @result.is_a?(String) %>
+    <h2><%=@result%></h2>
+
+    <a href="/bookings/<%=@booking_obj.id%>/edit">Go back to editing window</a>
+    <a href="#">Update member's details</a>
+
+<%end%>
+
+<h2>Success</h2>

@@ -1,29 +1,30 @@
 
-<div class="">
+<div class="main__container">
 
   <header class="header--small">
-    <h1 class="header--small__text">gyM classeS</h1>
-
+    <h1 class="header--small__text">classes</h1>
 
     <div class="header--small__links-box">
-      <a href="/classes">List all classes</a>
-      <a href="/classes/new">Create a new class</a>
+      <a class="btn" href="/classes">list all classes</a>
+      <a class="btn" href="/classes/new">create a new class</a>
     </div>
-
 
   </header>
 
-  <div class="">
-
-    <table class="gym-classes-table">
+  <div class="main__view">
+    <table class="results-table">
+      <thead>
       <tr>
         <th>activity</th>
         <th>class time</th>
         <th>capacity</th>
         <th>actions</th>
       </tr>
+      </thead>
 
     <%@classes.sort_by! {|obj| obj.activity_id}%>
+
+    <tbody>
      <% for cls in @classes %>
 
           <tr>
@@ -32,8 +33,15 @@
             <td><%= cls.class_time %></td>
             <td><%= cls.class_capacity %></td>
 
-            <td><a href="/bookings/new/classes_to_members/<%=cls.id%>">Assign a Member</a><a href="#">Edit Class</a></td>
+            <td>
+              <div class="results-table__links-box">
+                <a class="btn-tables results-table__links-box__link" href="/bookings/new/classes_to_members/<%=cls.id%>">Assign a Member</a><a class="btn-tables results-table__links-box__link" href="/classes/<%=cls.id%>">Look into</a>
+              </div>
+            </td>
+
           </tr>
       <%end%>
+    </tbody>
     </table>
+
   </div>
