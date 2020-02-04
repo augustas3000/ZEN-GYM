@@ -121,7 +121,7 @@ breakdance.save
 # boxing class at 18:00
 options_hash_boxing_18_00 = {
   'activity_id' => boxing.id,
-  'class_time' => '18:00',
+  'class_time' => '18:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -130,7 +130,7 @@ boxing_class_18_00.save
 # boxing class at 10:00
 options_hash_boxing_10_00 = {
   'activity_id' => boxing.id,
-  'class_time' => '10:00',
+  'class_time' => '10:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -139,7 +139,7 @@ boxing_class_10_00.save
 # callisthenics class at 18:00
 options_hash_callisthenics_18_00 = {
   'activity_id' => callisthenics.id,
-  'class_time' => '18:00',
+  'class_time' => '18:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -148,7 +148,7 @@ callisthenics_class_18_00.save
 # callisthenics class at 10:00
 options_hash_callisthenics_10_00 = {
   'activity_id' => callisthenics.id,
-  'class_time' => '10:00',
+  'class_time' => '10:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -157,7 +157,7 @@ callisthenics_class_10_00.save
 # booty camp class at 18:00
 options_hash_booty_camp_18_00 = {
   'activity_id' => booty_camp.id,
-  'class_time' => '18:00',
+  'class_time' => '18:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -166,7 +166,7 @@ booty_camp_class_18_00.save
 # booty camp class at 10:00
 options_hash_booty_camp_10_00 = {
   'activity_id' => booty_camp.id,
-  'class_time' => '10:00',
+  'class_time' => '10:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -175,7 +175,7 @@ booty_camp_class_10_00.save
 # yoga class at 18:00
 options_hash_yoga_18_00 = {
   'activity_id' => yoga.id,
-  'class_time' => '18:00',
+  'class_time' => '18:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }
@@ -184,7 +184,7 @@ yoga_class_18_00.save
 # yoga class at 10:00
 options_hash_yoga_10_00 = {
   'activity_id' => yoga.id,
-  'class_time' => '10:00',
+  'class_time' => '10:00:00',
   'class_capacity' => 10,
   'class_activation_status' => 'active'
 }

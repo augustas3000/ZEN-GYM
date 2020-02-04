@@ -107,11 +107,23 @@ class Booking
 
     if new_member_obj.member_activation_status == 'active'
       if new_gym_class_obj.class_activation_status == 'active'
+
         if new_gym_class_obj.class_capacity > 0
 
-          if new_member_obj.membership_status == 'standard' && new_gym_class_obj.class_time == '18:00'
+          # check how many characters time string has, in case we retrieve data from db where the format is 00:00:00:
+          # 17:00 - 5, OK
+          # 17:00:00 - 8, needs converted
+          if new_gym_class_obj.class_time.length == 8
+             # remove the last 3 digits
+             new_gym_class_obj.class_time = new_gym_class_obj.class_time[0...-3]
+          end
 
-            return "Only premium members are eligible for evening classes. Please upgrade to premium or select a morning class."
+          new_class_time_int = new_gym_class_obj.class_time.gsub(/:/, "").to_i
+          # peak times: 17:00 to 20:00
+          # peak times int - 1700 to 2000
+          if new_member_obj.membership_status == 'standard' && new_class_time_int.between?(1700, 2000)
+
+            return "Only premium members are eligible for peak-time(17:00 to 20:00) classes. Please upgrade to premium or select a non-peak class."
           end
 
           old_gym_class_obj.class_capacity += 1
@@ -125,7 +137,6 @@ class Booking
         else
           return "Sorry, but the class is now fully booked. Please select another class/time"
         end
-
       end
       return "Sorry but the class is currently deactivated. Please select another class."
     end

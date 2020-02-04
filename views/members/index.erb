@@ -3,7 +3,7 @@
     <h1 class="header--small__text">members</h1>
 
     <div class="header--small__links-box">
-      <a class="btn" href="/members">List all members</a>
+      <a class="btn" href="/members">all members</a>
       <a class="btn" href="/members/new">new member</a>
       <a class="btn" href="/members/deactivated">deactivated members</a>
     </div>
@@ -11,7 +11,7 @@
   </header>
 
   <div class="main__view">
-
+    <h1>all members</h1>
     <table class="results-table">
       <tr>
         <th>id</th>
@@ -30,7 +30,11 @@
           <td><%= member.member_surname%></td>
           <td><%= member.membership_status%></td>
           <td><%= member.member_activation_status%></td>
-          <td><a class="btn-tables" href="/bookings/new/members_to_classes/<%= member.id%>">book a class</a><a class="btn-tables" href="#">Edit</a> <a class="btn-tables" href="#">More Info</a></td>
+          <td>
+          <div class="results-table__links-box">
+            <a class="btn-tables" href="/bookings/new/members_to_classes/<%= member.id%>">book a class</a><a class="btn-tables" href="/members/<%= member.id %>/edit">Edit</a> <a class="btn-tables" href="/members/<%=member.id%>">More Info</a>
+          </div>
+          </td>
         </tr>
         <% end %>
       <% end %>

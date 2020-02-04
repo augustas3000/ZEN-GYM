@@ -1,0 +1,29 @@
+<h1>edit class</h1>
+
+<form action="/classes/<%= @current_class.id %>" method="post">
+
+    <label for="activity">Update activity:</label>
+    <select id="activity" name="activity_id">
+      <%for activity in @activities %>
+          <option <%="selected" if activity.id == @current_activity.id%> value="<%=activity.id%>"><%=activity.activity_name%></option>
+      <% end %>
+    </select>
+
+    <label>
+    Update Time:
+      <input type="text" name="class_time" value="<%= @current_class.class_time %>">
+    </label>
+
+    <label>Update Capacity:
+        <input type="text" name="class_capacity" value="<%= @current_class.class_capacity %>">
+    </label>
+
+    <label>Class activation status:
+      <select name="class_activation_status">
+        <option value="active" <%= "selected" if @current_class.class_activation_status == "active" %>>Active</option>
+        <option value="deactivated" <%= "selected" if @current_class.class_activation_status == "deactivated" %>>Deactivated</option>
+      </select>
+        </label>
+
+  <input type='submit' value="Update class">
+</form>

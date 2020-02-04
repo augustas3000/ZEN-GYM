@@ -1,1 +1,46 @@
-<h1>Make a new booking</h1>
+<div class="main__container">
+
+  <header class="header--small">
+    <h1 class="header--small__text">bookings</h1>
+
+    <div class="header--small__links-box">
+      <a class="btn" href="/bookings">all bookings</a>
+
+      <a class="btn" href="/bookings/new">new booking</a>
+    </div>
+  </header>
+
+  <div class="main__view">
+
+    <h1>new booking</h1>
+    <form method="post" action="/bookings">
+
+      <label for="member">Select member:</label>
+      <select id="member" name="member_id">
+        <%for member in @members %>
+          <%if member.member_activation_status == "active"%>
+            <option value="<%=member.id%>"><%=member.member_name%> <%=member.member_surname%> -- <%=member.membership_status%></option>
+          <% end %>
+        <% end %>
+      </select>
+
+      <label for="class">Select a class:</label>
+      <select id="class" name="class_id">
+        <%for cls in @classes %>
+          <%if cls.class_activation_status == "active"%>
+            <option value="<%=cls.id%>">
+                <% for activity in @activities %>
+                  <% if cls.activity_id == activity.id %>
+                    <%=activity.activity_name + " -- " + cls.class_time[0...-3]%>
+                  <% end %>
+                <% end %>
+               </option>
+          <% end %>
+        <% end %>
+      </select>
+
+
+      <input type="submit"  value="Submit Class">
+    </form>
+
+  </div>

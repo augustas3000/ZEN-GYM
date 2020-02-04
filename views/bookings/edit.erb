@@ -1,40 +1,58 @@
-<h1>hello thats editing window</h1>
 
-<form method="post" action="/bookings/<%= @booking_to_edit.id%>">
+<div class="main__container">
 
-  <label for="member-select">Select Updated Gym Member:</label>
-  <select id="member-select" name="member_id">
+  <header class="header--small">
+    <h1 class="header--small__text">bookings</h1>
 
-  <%for member in @members%>
-      <option <%= "selected" if @booking_to_edit.gym_member_id == member.id %> value="<%=member.id%>"> <%=member.member_name%> <%=member.member_surname%> </option>
-  <% end %>
-  </select>
+    <div class="header--small__links-box">
+      <a class="btn" href="/bookings">all bookings</a>
+      <a class="btn" href="/bookings/new">new booking</a>
+    </div>
 
+  </header>
 
-  <label for="member-select">Select Updated Activity:</label>
-  <select id="member-select" name="activity_id">
+  <div class="main__view">
 
-    <%for activity in @activities%>
-      <option <%= "selected" if activity.activity_name == @booking_to_edit.activity_name %> value="<%=activity.id %>" ><%=activity.activity_name%></option>
-    <% end %>
-  </select>
+    <h1>edit booking</h1>
 
+    <form method="post" action="/bookings/<%= @booking_to_edit.id%>">
 
-  <label for="time-select">Select Time:</label>
+      <label for="member-select">Select Updated Gym Member:</label>
+      <select id="member-select" name="member_id">
 
-  <select id="time-select" name="class_time">
-
-    <%times = @classes.map {|cls| cls.class_time} %>
-    <%unique_times = times.uniq%>
-
-    <% for time in unique_times %>
-      <option <%= "selected" if time == @booking_to_edit.class_time %> value="<%=time%>"><%=time%></option>
-
-    <% end %>
-
-  </select>
+      <%for member in @members%>
+          <option <%= "selected" if @booking_to_edit.gym_member_id == member.id %> value="<%=member.id%>"> <%=member.member_name%> <%=member.member_surname%> </option>
+      <% end %>
+      </select>
 
 
+      <label for="member-select">Select Updated Activity:</label>
+      <select id="member-select" name="activity_id">
 
-  <input type="submit"  value="Submit For Class">
-</form>
+        <%for activity in @activities%>
+          <option <%= "selected" if activity.activity_name == @booking_to_edit.activity_name %> value="<%=activity.id %>" ><%=activity.activity_name%></option>
+        <% end %>
+      </select>
+
+
+      <label for="time-select">Select Time:</label>
+
+      <select id="time-select" name="class_time">
+
+        <%times = @classes.map {|cls| cls.class_time} %>
+        <%unique_times = times.uniq%>
+
+        <% for time in unique_times %>
+          <option <%= "selected" if time == @booking_to_edit.class_time %> value="<%=time%>"><%=time%></option>
+
+        <% end %>
+
+      </select>
+
+      <input type="submit"  value="update">
+    </form>
+
+  </div>
+
+
+</div>

@@ -12,7 +12,7 @@
   </header>
 
   <div class="main__view">
-
+    <h1>all bookings</h1>
     <table class="results-table">
       <tr>
         <th>booking_id</th>
@@ -29,16 +29,16 @@
       </tr>
       <% for booking_hash in @all_bookings_report %>
 
-
         <tr>
           <% for k,v in booking_hash %>
           <td><%=v%></td>
           <% end %>
 
-          <td><a href="/bookings/<%=booking_hash['booking_id']%>/edit">Edit</a></td>
+          <td><a class="btn-tables" href="/bookings/<%=booking_hash['booking_id']%>/edit">edit</a></td>
         </tr>
 
       <% end %>
     </table>
 
   </div>
+</div>

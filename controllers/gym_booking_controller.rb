@@ -28,8 +28,19 @@ end
 # for when we create booking from classes view
 
 get '/bookings/new' do
-
+  @classes = GymClass.all
+  @members = Member.all
+  @activities = Activity.all
   erb( :"bookings/new" )
+end
+
+
+post '/bookings' do
+
+  @class = GymClass.find(params['class_id'].to_i)
+  @member = Member.find(params['member_id'].to_i)
+  @result = @member.book_a_class(@class)
+  erb( :"bookings/created" )
 end
 
 

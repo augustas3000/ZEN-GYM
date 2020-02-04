@@ -7,6 +7,7 @@
     <div class="header--small__links-box">
       <a class="btn" href="/classes">list all classes</a>
       <a class="btn" href="/classes/new">create a new class</a>
+      <a class="btn" href="/classes/deactivated">deactivated classes</a>      
     </div>
 
   </header>
@@ -32,7 +33,17 @@
             <td><%=@current_activity.activity_name%></td>
             <td><%=@class.class_time%></td>
             <td><%=@class.class_capacity%></td>
-            <td><a class="btn-tables results-table__links-box__link" href="">Delete</a></td>
+            <td>
+
+              <form class = "form-btn" action="/classes/<%= @class.id %>/edit" method="get">
+              <input class="btn-form btn-tables" type='submit' value="edit">
+              </form>
+
+              <form class = "form-btn" action="/classes/<%= @class.id %>/delete" method="post">
+              <input class="btn-form btn-tables" type='submit' value="delete">
+              </form>
+
+            </td>
           </tr>
     </tbody>
     </table>
@@ -66,8 +77,5 @@
             </tr>
       </tbody>
       </table>
-
-
-
 
   </div>

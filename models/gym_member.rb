@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 require 'pry'
 
 class Member
-  attr_reader :id, :member_name, :member_surname, :membership_status, :member_activation_status
+  attr_accessor :id, :member_name, :member_surname, :membership_status, :member_activation_status
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -68,8 +68,19 @@ class Member
       if class_obj.class_activation_status == 'active'
         if class_obj.class_capacity > 0
 
-          if @membership_status == 'standard' && class_obj.class_time == '18:00'
-            return "Only premium members are eligible for evening classes. Please upgrade to premium or select a morning class."
+          # check how many characters time string has, in case we retrieve data from db where the format is 00:00:00:
+          # 17:00 - 5, OK
+          # 17:00:00 - 8, needs converted
+          if class_obj.class_time.length == 8
+             # remove the last 3 digits
+             class_obj.class_time = class_obj.class_time[0...-3]
+          end
+
+          new_class_time_int = class_obj.class_time.gsub(/:/, "").to_i
+          # peak times: 17:00 to 20:00
+          # peak times int - 1700 to 2000
+          if @membership_status == 'standard' && new_class_time_int.between?(1700, 2000)
+            return "Only premium members are eligible for peak-time(17:00 to 20:00) classes. Please upgrade to premium or select a non-peak class."
           end
 
           # reduce class_obj capacity by 1

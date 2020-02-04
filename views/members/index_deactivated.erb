@@ -3,7 +3,7 @@
     <h1 class="header--small__text">members</h1>
 
     <div class="header--small__links-box">
-      <a class="btn" href="/members">List all members</a>
+      <a class="btn" href="/members">all members</a>
       <a class="btn" href="/members/new">new member</a>
       <a class="btn" href="/members/deactivated">deactivated members</a>
     </div>
@@ -11,7 +11,7 @@
   </header>
 
   <div class="main__view">
-
+    <h1>deactivated members</h1>
     <table class="results-table">
       <tr>
         <th>id</th>
@@ -32,7 +32,15 @@
 
           <td>
           <div class="results-table__links-box">
-            <a class="btn-tables results-table__links-box__link" href="#">Edit</a><a class="btn-tables results-table__links-box__link" href="#">Delete</a>
+
+            <form class = "form-btn" action="/members/<%= member.id %>/activate" method="post">
+            <input class="btn-form btn-tables" type='submit' value="activate">
+            </form>
+
+            <form class = "form-btn" action="/members/<%= member.id %>/delete" method="post">
+            <input class="btn-form btn-tables" type='submit' value="delete">
+            </form>
+
           </div>
           </td>
 

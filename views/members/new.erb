@@ -1,27 +1,45 @@
-<h1>Add a new member to zeN gyM</h1>
+<div class="main__container">
 
-<form method="post" action="/members">
+  <header class="header--small">
+    <h1 class="header--small__text">members</h1>
 
-  <label for="first-name">First Name:</label>
-  <input id="first-name" type="text" name="member_name"  />
+    <div class="header--small__links-box">
+      <a class="btn" href="/members">all members</a>
+      <a class="btn" href="/members/new">new member</a>
 
+      <a class="btn" href="/members/deactivated">deactivated members</a>
 
-  <label for="last-name">Last Name:</label>
-  <input id="last-name" type="text" name="member_surname" />
-
-
-  <label for="house-select">Membership:</label>
-  <select id="house-select" name="membership_status">
-        <option value="standard" selected>Standard</option>
-        <option value="premium">Premium</option>
-  </select>
+    </div>
+  </header>
 
 
-  <label for="house-select">Activation:</label>
-  <select id="house-select" name="member_activation_status">
-        <option value="active" selected>Active</option>
-        <option value="deactivated">Deactivated</option>
-  </select>
+  <div class="main__view">
+    <h1>new member</h1>
 
-  <input type="submit"  value="Submit Member">
-</form>
+    <form method="post" action="/members">
+
+      <label for="first-name">First Name:</label>
+      <input id="first-name" type="text" name="member_name"  />
+
+
+      <label for="last-name">Last Name:</label>
+      <input id="last-name" type="text" name="member_surname" />
+
+
+      <label for="house-select">Membership:</label>
+      <select id="house-select" name="membership_status">
+            <option value="standard" selected>Standard</option>
+            <option value="premium">Premium</option>
+      </select>
+
+
+      <label for="house-select">Activation:</label>
+      <select id="house-select" name="member_activation_status">
+            <option value="active" selected>Active</option>
+            <option value="deactivated">Deactivated</option>
+      </select>
+
+      <input type="submit"  value="Submit Member">
+    </form>
+
+  </div>

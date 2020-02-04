@@ -1,0 +1,58 @@
+<div class="main__container">
+  <header class="header--small">
+    <h1 class="header--small__text">classes</h1>
+
+    <div class="header--small__links-box">
+      <a class="btn" href="/classes">all classes</a>
+      <a class="btn" href="/classes/new">new class</a>
+      <a class="btn" href="/classes/deactivated">deactivated classes</a>
+    </div>
+
+  </header>
+
+  <div class="main__view">
+    <h1>deactivated classes</h1>
+    <table class="results-table">
+      <thead>
+      <tr>
+        <th>activity</th>
+        <th>class time</th>
+        <th>capacity</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+
+      <%@classes.sort_by! {|obj| obj.activity_id}%>
+
+      <tbody>
+
+       <% for cls in @classes %>
+
+          <% if cls.class_activation_status == 'deactivated' %>
+            <tr>
+              <td><%= @activities_hash[cls.activity_id] %></td>
+
+              <td><%= cls.class_time %></td>
+              <td><%= cls.class_capacity %></td>
+
+              <td>
+                <div class="results-table__links-box">
+
+                  <form class = "form-btn" action="/classes/<%= cls.id %>/activate" method="post">
+                  <input class="btn-form btn-tables" type='submit' value="activate">
+                  </form>
+
+                  <form class = "form-btn" action="/classes/<%= cls.id %>/delete" method="post">
+                  <input class="btn-form btn-tables" type='submit' value="delete">
+                  </form>
+
+                </div>
+              </td>
+            </tr>
+          <% end %>
+
+        <%end%>
+      </tbody>
+      </table>
+
+      </div>

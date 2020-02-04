@@ -26,14 +26,13 @@ end
 
 get '/classes/new' do
   @activities = Activity.all
-
-  # activity
-  # class time
-  # class_capacity
-  # activation status
-
-
   erb( :"classes/new" )
+end
+
+get'/classes/deactivated' do
+  @activities_hash = Activity.all.map { |activity| [activity.id.to_i, activity.activity_name] }.to_h
+  @classes = GymClass.all
+  erb( :"classes/index_deactivated" )
 end
 
 post '/classes' do
@@ -52,25 +51,37 @@ end
 
 
 
+get '/classes/:id/edit' do
+  @current_class = GymClass.find(params['id'].to_i)
+  @current_activity = Activity.find(@current_class.activity_id)
 
+  @activities = Activity.all
+  # link to form for editing
+  erb( :"classes/edit" )
+end
 
+# updating
+post '/classes/:id' do
+  @class = GymClass.find(params['id'].to_i)
+  @class.activity_id = params['activity_id'].to_i
+  @class.class_time = params['class_time']
+  @class.class_capacity = params['class_capacity'].to_i
+  @class.class_activation_status = params['class_activation_status']
+  @class.update
 
+  erb( :"classes/updated" )
+end
 
+# deletion:
+post '/classes/:id/delete' do
+  @class_to_delete = GymClass.find(params['id'].to_i)
+  @class_to_delete.delete
+  erb( :"classes/deleted" )
+end
 
-# provide a form for creating new members
-# get '/classes/new' do
-#   erb( :"classes/new" )
-# end
-#
-# # use resulting form data to create a nobject and save it to db
-# post '/classes' do
-#   @new_member_obj = Member.new(params)
-#   @new_member_obj.save
-#   erb( :"classes/member_created" )
-# end
-#
-# # show info of a particular member
-# get '/classes/:id' do
-#   @member = Member.find(params['id'].to_i)
-#   erb( :"classes/show" )
-# end
+post '/classes/:id/activate' do
+  @class = GymClass.find(params['id'].to_i)
+  @class.class_activation_status = 'active'
+  @class.save
+  redirect '/members'
+end

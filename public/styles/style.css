@@ -5,6 +5,7 @@
   --color-primary-light: #fbf4f9;
   --color-primary-dark: #916dd5;
   --color-darkest: #4d4646;
+  --color-footer: #cd6684;
 }
 
 /* base */
@@ -29,7 +30,7 @@ html {
 }
 
 body {
-  background-color: var(--color-primary-light);
+  /* background-color: var(--color-primary-light); */
   font-family: 'Noto Sans TC', sans-serif;
   font-weight: 400;
   line-height: 1.7;
@@ -44,48 +45,88 @@ body {
   font-size: 1.5rem;
   text-align: center;
   position: fixed;
-  left: 4rem;
+  margin-top: 5rem;
+  margin-left: 3rem;
   border: 1px var(--color-primary) solid;
+  background-color: rgba(195, 97, 151, 0.2);
+
 }
 .sidebar__nav {
   width: 20rem;
+
 }
 
 .sidebar__nav__item {
   list-style: none;
   padding: 1rem;
+
 }
 
  .sidebar__nav__item__link {
-  text-decoration: none;
-  font-size: 1.7rem;
-  color: var(--color-primary);
+
+   	display:inline-block;
+   	cursor:pointer;
+   	color: var(--color-primary);
+   	font-size:1.7rem;
+   	text-decoration:none;
+    width: 100%;
+    border-radius: 10px;
+
 }
+
+.sidebar__nav__item__link:hover {
+	background-color:#e0cb45;
+}
+.sidebar__nav__item__link:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* layout */
 .container {
-  background-color: var(--color-primary-dark);
+  /* background-color: var(--color-primary-dark); */
   min-height: 50rem;
-  box-shadow: 0 1rem 1rem var(--color-primary-dark);
-  padding-right: 3rem;
+  /* box-shadow: 0 1rem 1rem var(--color-primary-dark); */
+  /* padding-right: 3rem;
+  padding-left: 3rem; */
+  margin-bottom: 0.3em;
+  background-image: linear-gradient(to right, rgba(159, 126, 221, 0.92), rgba(164, 73, 207, 0.92)) ,url("../images/main_bckgrd.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .header {
-  background-color: var(--color-primary-dark);
-  border-bottom: var(--color-primary-light);
-  text-align: center;
+
+  background-image: linear-gradient(to right, rgba(145, 109, 213, 0.8), rgba(221, 143, 197, 0.8)) ,url("../images/footer_bckgrd.jpg");
+  background-size: cover;
+  background-position: center;
+
   display: flex;
   justify-content: flex-end;
+
   padding: 3rem;
+  height: 18vh;
+
 }
 
 .header__text-box {
-  align-self: center;
+
 }
 
 .header__text-box__text {
   font-size: 3rem;
+  color: #ffffff;
 }
 
 
@@ -98,7 +139,11 @@ body {
 }
 
 .content {
+  margin-top: 0.3rem;
   display: flex;
+  padding: 5rem 3rem 5rem 3rem;
+
+
 }
 
 .nav__space {
@@ -124,6 +169,7 @@ body {
 .header--small__text {
   font-size: 2.5rem;
   text-align: center;
+  padding-bottom: 3rem;
 }
 
 .header--small__links-box {
@@ -153,6 +199,7 @@ body {
 
 .results-table th {
   font-size: 1.8rem;
+  padding-bottom: 1.5rem;
 }
 
 .results-table td {
@@ -254,4 +301,30 @@ some padding before members list*/
 .btn-form {
   border: none;
   padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+}
+
+
+/* footer */
+.footer {
+  padding-top: 5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 3rem;
+  height: 24vh;
+
+  background-image: linear-gradient(to right, rgba(145, 109, 213, 0.8), rgba(221, 143, 197, 0.8)) ,url("../images/header_bckgrd.jpg");
+  background-size: cover;
+  background-position: bottom;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer__text-box {
+  align-self: flex-end;
+}
+
+.footer__text-box__text {
+  font-size: 3rem;
+  color: #ffffff;
 }

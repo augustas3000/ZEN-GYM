@@ -2,13 +2,16 @@ require_relative( '../db/sql_runner' )
 
 
 class GymClass
-  attr_reader :id, :class_activation_status, :class_time, :activity_id
-  attr_accessor :class_capacity
+
+  attr_accessor :class_capacity, :class_time, :id, :class_activation_status, :activity_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @activity_id = options['activity_id'].to_i
+    # make sure if time is taken from database, that there are only
+    # four digits as opposed to 6?
     @class_time = options['class_time']
+
     @class_capacity = options['class_capacity'].to_i
     @class_activation_status = options['class_activation_status']
   end

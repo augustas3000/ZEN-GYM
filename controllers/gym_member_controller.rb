@@ -53,7 +53,19 @@ post '/members/:id' do
   member_obj_to_update = Member.new(params)
   member_obj_to_update.update
   erb( :"members/updated" )
+end
 
+post '/members/:id/activate' do
+  @member = Member.find(params['id'].to_i)
+  @member.member_activation_status = 'active'
+  @member.save
+  redirect '/members'
+end
+
+post '/members/:id/delete' do
+  @member = Member.find(params['id'].to_i)
+  @member.delete
+  redirect '/members'
 end
 
 
