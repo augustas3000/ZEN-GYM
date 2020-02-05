@@ -26,25 +26,21 @@
   </select>
 
 
-  <label for="activity-select">Select Activity:</label>
-  <select id="activity-select" name="activity_id">
-  <%for activity in @activities%>
-      <option value="<%=activity.id%>"> <%=activity.activity_name()%> </option>
 
-  <% end %>
-  </select>
+  <label for="activity-select">Select Class:</label>
+  <select id="activity-select" name="class_id">
 
-  <label for="class-select">Select Time:</label>
-  <select id="class-select" name="class_time">
 
-  <%times = @classes.map {|cls| cls.class_time} %>
+    <%activities_hash = @activities.map {|act| [act.id, act.activity_name]}.to_h%>
 
-  <%unique_times = times.uniq%>
-  <% for time in unique_times %>
-       <option value="<%=time%>"> <%=time%> </option>
-  <% end %>
+    <%for cls in @classes%>
+
+      <option value="<%=cls.id%>"> <%=activities_hash[cls.activity_id]%> -- <%=cls.class_time%></option>
+
+    <% end %>
 
   </select>
+
 
   <input type="submit"  value="Submit Member">
 </form>

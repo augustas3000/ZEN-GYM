@@ -90,8 +90,9 @@ end
 # post route specifically for booking from members view
 
 post '/bookings/members' do
+
   @gym_member = Member.find(params['member_id'].to_i)
-  @chosen_class = GymClass.find_by_activity_and_time(params)
+  @chosen_class = GymClass.find(params['class_id'].to_i)
   @result = @gym_member.book_a_class(@chosen_class)
   erb( :"bookings/booked_from_member" )
 end
@@ -106,4 +107,10 @@ post '/bookings/:id' do
   @result = @booking_obj.edit_booking(@new_member_obj,@old_gym_class,@new_gym_class)
   # binding.pry
   erb( :"bookings/updated" )
+end
+
+post '/bookings/:id/delete' do
+  @booking_to_delete = Booking.find(params['id'].to_i)
+  @booking_to_delete.delete
+  redirect '/bookings'
 end

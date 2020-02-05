@@ -34,7 +34,14 @@
           <td><%=v%></td>
           <% end %>
 
-          <td><a class="btn-tables" href="/bookings/<%=booking_hash['booking_id']%>/edit">edit</a></td>
+          <td><a class="btn-tables" href="/bookings/<%=booking_hash['booking_id']%>/edit">edit</a>
+
+          <form class = "form-btn" action="/bookings/<%= booking_hash['booking_id']%>/delete" method="post">
+          <input class="btn-form btn-tables" type='submit' value="delete">
+          </form>
+          </td>
+
+
         </tr>
 
       <% end %>
