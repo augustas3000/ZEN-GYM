@@ -20,6 +20,10 @@ get '/members' do
   erb( :"members/index" )
 end
 
+
+
+
+
 get '/members/deactivated' do
   @members_deactivated = Member.deactivated_members()
   erb( :"members/index_deactivated" )
@@ -43,6 +47,17 @@ get '/members/:id' do
   erb( :"members/show" )
 end
 
+# /members - index GET
+# /members/new - new member GET
+# /members/deactivated - index GET
+# /members - save POST
+# /members/:id - show GET
+# /members/:id/edit - edit GET
+# /members/:id - update POST
+# /members/:id/activate - update/activate POST
+# /members/:id/delete - delete POST
+
+
 # edit particular members info
 get '/members/:id/edit' do
   @member = Member.find(params['id'].to_i)
@@ -58,7 +73,7 @@ end
 post '/members/:id/activate' do
   @member = Member.find(params['id'].to_i)
   @member.member_activation_status = 'active'
-  @member.save
+  @member.update
   redirect '/members'
 end
 

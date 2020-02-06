@@ -82,6 +82,6 @@ end
 post '/classes/:id/activate' do
   @class = GymClass.find(params['id'].to_i)
   @class.class_activation_status = 'active'
-  @class.save
+  @class.update
   redirect '/members'
 end

@@ -58,8 +58,6 @@ end
 
 
 
-
-
 # a booking for a particular class(class to member booking)
 get '/bookings/new/classes_to_members/:id' do
   @class = GymClass.find(params['id'].to_i)
@@ -111,6 +109,24 @@ end
 
 post '/bookings/:id/delete' do
   @booking_to_delete = Booking.find(params['id'].to_i)
+  @class = GymClass.find(@booking_to_delete.gym_class_id)
+  @class.class_capacity += 1
+  @class.update
   @booking_to_delete.delete
   redirect '/bookings'
 end
+
+
+
+# /bookings - index GET
+# /bookings/new - new booking GET
+# /bookings/new/classes_to_members/:class_id - new booking GET
+# /bookings/new/members_to_classes/:member_id - new booking GET
+# /bookings - save POST
+# /bookings/classes - save POST
+# /bookings/members - save POST
+# /bookings/:id - show GET
+# /bookings/:id/edit - edit GET
+# /bookings/:id - update POST
+# /bookings/:id/activate - update/activate POST
+# /bookings/:id/delete - delete POST

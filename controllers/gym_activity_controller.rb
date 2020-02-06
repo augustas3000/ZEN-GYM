@@ -17,6 +17,15 @@ get '/activities' do
 end
 
 
+
+# /activities - index GET
+# /activities/new - new member GET
+# /activities - save POST
+# /activities/:id/edit - edit GET
+# /activities/:id - update POST
+# /activities/:id/delete - delete POST
+
+
 get '/activities/new' do
 
   erb( :"activities/new" )
