@@ -1,4 +1,4 @@
-# week4_5_Project_gym
+First full stack project as part of Professional Software Development, CodeClan.
 
 The first solo-project as part of week 4 at Code Clan. 
 Description:
@@ -35,6 +35,8 @@ A gym class consists of activity name and corresponding class time. Members can 
 classes can be assigned to members, as well as bookings can be created by inputing class and member from
 dropdown list.  Attributes such as member activation status, member membership status, class activation status,
 class time, and class capacity were used in conditionals to determine whether booking is successful or not.
+
+To Run: Have Ruby, and Sinatra Installed. Have PostgreSQL installed with a db name - gym.
 
 For more info contact me at augusto.pasaulis@gmail.com
 
