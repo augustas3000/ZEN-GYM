@@ -105,6 +105,8 @@ class Booking
 
   def edit_booking(new_member_obj,old_gym_class_obj,new_gym_class_obj)
 
+    # 1. Code for pseudocode section 1, in P.10 - Pseudocode PDA.
+
     if new_member_obj.member_activation_status == 'active'
       if new_gym_class_obj.class_activation_status == 'active'
 
@@ -125,6 +127,8 @@ class Booking
 
             return "Only premium members are eligible for peak-time(17:00 to 20:00) classes. Please upgrade to premium or select a non-peak class."
           end
+
+    # 2. Code for pseudocode section 2, in P.10 - Pseudocode PDA.
 
           old_gym_class_obj.class_capacity += 1
           old_gym_class_obj.update()
